@@ -25,6 +25,7 @@ class Slack extends Adapter
     channel = envelope.reply_to || @channelMapping[envelope.room] || envelope.room
 
     strings.forEach (str) =>
+      str = @escapeHtml str
       args = JSON.stringify
         username   : @robot.name
         channel    : channel
